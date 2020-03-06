@@ -1,76 +1,64 @@
-package E.L.I.L.Y.A.Layers;
+package com.teddy.albert.layers;
 
-import E.L.I.L.Y.A.DeepCorp.Biais;
-import E.L.I.L.Y.A.DeepCorp.Poid;
-import E.L.I.L.Y.A.Fonction.FonctionBase;
+import com.teddy.albert.deepCorp.Biais;
+import com.teddy.albert.fonction.FonctionBase;
 
 import java.util.ArrayList;
 
 public class LayersBiais implements ILayers {
 
-    private ArrayList<ArrayList<ArrayList<Double>>> listeBiaisFinal=new ArrayList<>();
-    private ArrayList<ArrayList<Double>> listeDeBiais=new ArrayList<>();
-    private ArrayList<Double> listeDeBiaisSimple;
-    private double valeurDuBiais;
-
-    public ArrayList<ArrayList<ArrayList<Double>>> listesuperieurBiais(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre){
+    private ArrayList<ArrayList<ArrayList<Double>>> genListePoidOuBiaisListe= new ArrayList<>();
+    private ArrayList<ArrayList<Double>> genListePoidOuBiaisListeNiveau1=new ArrayList<>();
+    private ArrayList<Double> genListePoidOuBiaisListeNiveau2=new ArrayList<>();
 
 
-        this.listeBiaisFinal =new ArrayList<>(liste.size());
 
-        for (int i = 0; i < nombre; i++) {
+    public ArrayList<ArrayList<ArrayList<Double>>> genListeBiais(ArrayList<ArrayList<ArrayList<Double>>> liste) {
 
-            this.listeDeBiais= listeIntermediairePoid(liste.get(i));
+        for (int i = 0; i <liste.size() ; i++) {
 
-            this.listeBiaisFinal.add(this.listeDeBiais);
+            this.genListePoidOuBiaisListeNiveau1 = genListePoidOuBiaisN1(liste.get(0));
         }
-
-        return this.listeBiaisFinal;
+        this.genListePoidOuBiaisListe.add(this.genListePoidOuBiaisListeNiveau1);
+        return this.genListePoidOuBiaisListe;
     }
 
+    private ArrayList<ArrayList<Double>> genListePoidOuBiaisN1(ArrayList<ArrayList<Double>> liste) {
 
 
+        for (int i = 0; i <liste.size() ; i++) {
 
+            this.genListePoidOuBiaisListeNiveau2 = genListePoidOuBiaisN2(liste.get(i));
 
-    private ArrayList<ArrayList<Double>>listeIntermediairePoid(ArrayList<ArrayList<Double>> listeIntermediaire){
-
-        this.listeDeBiais =new ArrayList<>();
-
-        for (int i = 0; i < listeIntermediaire.size(); i++) {
-
-            this.listeDeBiaisSimple = valeurEnDouble(listeIntermediaire.get(i));
-
-            this.listeDeBiais.add(this.listeDeBiaisSimple);
+            this.genListePoidOuBiaisListeNiveau1.add(this.genListePoidOuBiaisListeNiveau2);
         }
-
-        return this.listeDeBiais;
+        return this.genListePoidOuBiaisListeNiveau1;
     }
 
+    private ArrayList<Double> genListePoidOuBiaisN2(ArrayList<Double> liste) {
 
 
+            this.genListePoidOuBiaisListeNiveau2 = new ArrayList<>();
 
-    private ArrayList<Double> valeurEnDouble(ArrayList<Double>listeACree){
+            for (int i = 0; i <liste.size() ; i++) {
 
-        this.listeDeBiaisSimple=new ArrayList<>();
+                Biais bias = new Biais();
 
-        for (int i = 0; i <listeACree.size() ; i++) {
-            Biais biais = new Biais();
-            this.valeurDuBiais = biais.getValeurBiais();
-            this.listeDeBiaisSimple.add(this.valeurDuBiais);
-        }
-        return this.listeDeBiaisSimple;
+                this.genListePoidOuBiaisListeNiveau2.add(liste.get(0)+bias.getValeurBiais());
+            }
+            return this.genListePoidOuBiaisListeNiveau2;
     }
-
-
 
 
     @Override
-    public ArrayList<ArrayList<ArrayList<Double>>> createurFinalNeural(ArrayList<ArrayList<ArrayList<Double>>> lists, FonctionBase fonctionBase) {
+    public ArrayList<ArrayList<ArrayList<Double>>> createurFinalNeural(ArrayList<ArrayList<ArrayList<Double>>> lists, FonctionBase fonctionBase,int valeur) {
         return null;
     }
 
     @Override
-    public ArrayList<ArrayList<ArrayList<Double>>> listesuperieurppoid(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre) {
+    public ArrayList<ArrayList<ArrayList<Double>>> genListePoid(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre) {
         return null;
     }
+
+
 }

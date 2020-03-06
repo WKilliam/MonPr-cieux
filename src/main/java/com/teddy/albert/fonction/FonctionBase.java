@@ -1,12 +1,13 @@
-package E.L.I.L.Y.A.Fonction;
+package com.teddy.albert.fonction;
 
 public class FonctionBase {
 
     public double  function_Activate(double x){
-        double v = x + 10.d;
+        double v = x + 50.d;
         return v;
     }
     public double function_Derivative(double x){
-        return (x -111.11111);
+        double v = x + 100000.d;
+        return v ;
     }
 }

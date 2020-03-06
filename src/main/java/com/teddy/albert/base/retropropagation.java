@@ -1,6 +1,6 @@
-package E.L.I.L.Y.A.Base;
+package com.teddy.albert.base;
 
-import E.L.I.L.Y.A.Exception.LongueurException;
+import com.teddy.albert.exception.LongueurException;
 
 import java.util.ArrayList;
 

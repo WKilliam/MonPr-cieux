@@ -1,6 +1,6 @@
-package E.L.I.L.Y.A.DeepCorp;
+package com.teddy.albert.deepCorp;
 
-import E.L.I.L.Y.A.Fonction.FonctionBase;
+import com.teddy.albert.fonction.FonctionBase;
 
 public class Neurone {
 
@@ -11,11 +11,22 @@ public class Neurone {
 
 
     public Neurone(FonctionBase fonctionUtiliser,
-                   double entrerValeur) {
+                   double entrerValeur,int valeurFonction) {
 
         this.fonctionUtiliser = fonctionUtiliser;
-        this.FonctionActivation = this.fonctionUtiliser.function_Activate(entrerValeur);
-        this.FonctionDerive=this.fonctionUtiliser.function_Derivative(entrerValeur);
+
+        switch (valeurFonction){
+
+            case 0:
+                this.FonctionActivation = this.fonctionUtiliser.function_Activate(entrerValeur);
+                break;
+            case 1:
+                this.FonctionDerive=this.fonctionUtiliser.function_Derivative(entrerValeur);
+                break;
+            default:
+                System.out.println("vous avez entrer une mauvaise valeur entre la dérivé et la fonction");
+                break;
+        }
 
     }
 

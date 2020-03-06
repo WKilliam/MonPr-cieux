@@ -1,8 +1,8 @@
-package E.L.I.L.Y.A.Layers;
+package com.teddy.albert.layers;
 
 
-import E.L.I.L.Y.A.DeepCorp.Neurone;
-import E.L.I.L.Y.A.Fonction.FonctionBase;
+import com.teddy.albert.deepCorp.Neurone;
+import com.teddy.albert.fonction.FonctionBase;
 
 import java.util.ArrayList;
 
@@ -13,24 +13,23 @@ public class LayersNeurone implements ILayers {
     private ArrayList<Double> listeArrayDouble =new ArrayList<>();
 
 
-    public ArrayList<ArrayList<ArrayList<Double>>> createurFinalNeural(ArrayList<ArrayList<ArrayList<Double>>>lists, FonctionBase fonctionBase){
+    public ArrayList<ArrayList<ArrayList<Double>>> createurFinalNeural(ArrayList<ArrayList<ArrayList<Double>>>lists, FonctionBase fonctionBase,int valeur){
 
         for (int i = 0; i <lists.size() ; i++) {
 
-            ArrayList<ArrayList<Double>> arrayLists = lists.get(0);
-            this.listeArray2Double = createurMilieuNeural(lists.get(0), fonctionBase);
+            this.listeArray2Double = createurMilieuNeural(lists.get(0), fonctionBase,valeur);
         }
         this.listeArray3Double.add(this.listeArray2Double);
         return this.listeArray3Double;
     }
 
-    private ArrayList<ArrayList<Double>> createurMilieuNeural(ArrayList<ArrayList<Double>>lists, FonctionBase fonctionBase){
+    private ArrayList<ArrayList<Double>> createurMilieuNeural(ArrayList<ArrayList<Double>>lists, FonctionBase fonctionBase,int valeur){
 
         this.listeArray2Double = new ArrayList<>();
 
         for (int i = 0; i <lists.size() ; i++) {
 
-            this.listeArrayDouble = createurNeural(lists.get(i), fonctionBase);
+            this.listeArrayDouble = createurNeural(lists.get(i), fonctionBase,valeur);
 
             this.listeArray2Double.add(this.listeArrayDouble);
         }
@@ -38,14 +37,25 @@ public class LayersNeurone implements ILayers {
     }
 
 
-    private ArrayList<Double> createurNeural(ArrayList<Double> listeX, FonctionBase fonctionBase){
+    private ArrayList<Double> createurNeural(ArrayList<Double> listeX, FonctionBase fonctionBase,int valeur){
 
         this.listeArrayDouble = new ArrayList<>();
         for (int i = 0; i <listeX.size() ; i++) {
 
-            Neurone neural = new Neurone(fonctionBase,listeX.get(0));
+            Neurone neural = new Neurone(fonctionBase,listeX.get(0),valeur);
 
-            this.listeArrayDouble.add(neural.getFonctionActivation());
+            switch (valeur){
+
+                case 0:
+                    this.listeArrayDouble.add(neural.getFonctionActivation());
+                    break;
+                case 1:
+                    this.listeArrayDouble.add(neural.getFonctionDerive());
+                    break;
+                default:
+                    System.out.println("probléme au niveau layer la valeur n'est pas reconnu");
+                    break;
+            }
         }
         return this.listeArrayDouble;
     }
@@ -53,12 +63,13 @@ public class LayersNeurone implements ILayers {
 
 
     @Override
-    public ArrayList<ArrayList<ArrayList<Double>>> listesuperieurppoid(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre) {
+    public ArrayList<ArrayList<ArrayList<Double>>> genListePoid(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre) {
         return null;
     }
 
     @Override
-    public ArrayList<ArrayList<ArrayList<Double>>> listesuperieurBiais(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre) {
+    public ArrayList<ArrayList<ArrayList<Double>>> genListeBiais(ArrayList<ArrayList<ArrayList<Double>>> liste) {
         return null;
     }
+
 }

@@ -1,4 +1,4 @@
-package E.L.I.L.Y.A.MathFile;
+package com.teddy.albert.mathFile;
 
 import java.util.ArrayList;
 

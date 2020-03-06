@@ -1,4 +1,4 @@
-package E.L.I.L.Y.A.Fonction;
+package com.teddy.albert.fonction;
 
 public class FonctionRelu extends FonctionBase{
 

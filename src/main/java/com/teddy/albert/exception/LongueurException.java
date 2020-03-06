@@ -1,4 +1,4 @@
-package E.L.I.L.Y.A.Exception;
+package com.teddy.albert.exception;
 
 public class LongueurException extends Throwable {
     public LongueurException() {

@@ -1,4 +1,4 @@
-package E.L.I.L.Y.A.DeepCorp;
+package com.teddy.albert.deepCorp;
 
 public class Biais {
 

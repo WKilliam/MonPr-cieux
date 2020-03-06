@@ -1,7 +1,7 @@
-package E.L.I.L.Y.A.Layers;
+package com.teddy.albert.layers;
 
-import E.L.I.L.Y.A.DeepCorp.Poid;
-import E.L.I.L.Y.A.Fonction.FonctionBase;
+import com.teddy.albert.deepCorp.Poid;
+import com.teddy.albert.fonction.FonctionBase;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class LayerPoid implements ILayers{
 
 
 
-    public ArrayList<ArrayList<ArrayList<Double>>> listesuperieurppoid(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre){
+    public ArrayList<ArrayList<ArrayList<Double>>> genListePoid(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre){
 
 
         this.listeDePoidsup =new ArrayList<>(liste.size());
@@ -58,12 +58,13 @@ public class LayerPoid implements ILayers{
     }
 
     @Override
-    public ArrayList<ArrayList<ArrayList<Double>>> createurFinalNeural(ArrayList<ArrayList<ArrayList<Double>>> lists, FonctionBase fonctionBase) {
+    public ArrayList<ArrayList<ArrayList<Double>>> createurFinalNeural(ArrayList<ArrayList<ArrayList<Double>>> lists, FonctionBase fonctionBase,int valeur) {
         return null;
     }
 
     @Override
-    public ArrayList<ArrayList<ArrayList<Double>>> listesuperieurBiais(ArrayList<ArrayList<ArrayList<Double>>> liste, int nombre) {
+    public ArrayList<ArrayList<ArrayList<Double>>> genListeBiais(ArrayList<ArrayList<ArrayList<Double>>> liste) {
         return null;
     }
+
 }
