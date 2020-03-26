@@ -40,7 +40,6 @@ public class CorpNeural {
        this.listeAdditionner= add.Addition_final(this.listeMultiplier);
        this.coucheDeBiais=b.genListeBiais(this.listeAdditionner);
        this.coucheNeuralActivation=nA.createurFinalNeural(this.coucheDeBiais,fonctionActivation,0);
-        System.out.println(this.coucheNeuralActivation);
        this.coucheNeuralDerive=nD.createurFinalNeural(this.coucheDeBiais,fonctionActivation,1);
 
     }

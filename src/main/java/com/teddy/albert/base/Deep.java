@@ -1,15 +1,7 @@
 package com.teddy.albert.base;
-import com.teddy.albert.backProg.FonctionRetropropagation;
 import com.teddy.albert.conceptionCorp.CorpNeural;
-import com.teddy.albert.deepCorp.Biais;
 import com.teddy.albert.exception.LongueurException;
 import com.teddy.albert.fonction.FonctionBase;
-import com.teddy.albert.fonction.FonctionSigmoid;
-import com.teddy.albert.layers.ILayers;
-import com.teddy.albert.layers.LayerPoid;
-import com.teddy.albert.layers.LayersBiais;
-import com.teddy.albert.layers.LayersNeurone;
-import com.teddy.albert.mathFile.*;
 import java.util.ArrayList;
 
 public class Deep {
@@ -48,6 +40,7 @@ public class Deep {
         System.out.println(cN.getEgalisateur());
         System.out.println(cN.getCouchePoid());
         System.out.println(cN.getCoucheDeBiais());
+        System.out.println(cN.getCoucheDeBiais().get(0).get(0).get(0));
         System.out.println(cN.getCoucheNeuralActivation());
         System.out.println(cN.getCoucheNeuralDerive());
 

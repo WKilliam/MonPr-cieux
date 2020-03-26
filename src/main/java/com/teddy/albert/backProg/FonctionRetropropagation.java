@@ -65,7 +65,7 @@ public class FonctionRetropropagation {
 
         ArrayList<ArrayList<ArrayList<Double>>> eElement_4 = fonctionMath2(eElement_1, eElement_2, eElement_3);
 
-
+        //fonctionPoid();
 
     }
 
@@ -75,41 +75,34 @@ public class FonctionRetropropagation {
      *      Math2
      */
 
-    private ArrayList<ArrayList<ArrayList<Double>>> fonctionPoid(ArrayList<ArrayList<ArrayList<Double>>> valeurVoulu,ArrayList<ArrayList<ArrayList<Double>>> valeurSortie,double valeurT){
+    private void fonctionPoid(ArrayList<ArrayList<ArrayList<Double>>> valeurVoulu,ArrayList<ArrayList<ArrayList<Double>>> valeurSortie,double valeurT){
 
         for (int i = 0; i <valeurSortie.size() ; i++) {
 
-            this.lisetePoidTotalNiveau1 = fonctionPoidNiveau1(valeurVoulu.get(i), valeurSortie.get(i),valeurT);
+            fonctionPoidNiveau1(valeurVoulu.get(i), valeurSortie.get(i),valeurT);
         }
-        this.lisetePoidTotalNiveau0.add(this.lisetePoidTotalNiveau1);
-
-        return this.lisetePoidTotalNiveau0;
     }
 
-    private ArrayList<ArrayList<Double>> fonctionPoidNiveau1(ArrayList<ArrayList<Double>> valeurVoulu,ArrayList<ArrayList<Double>> valeurSortie,double valeurT){
+    private void fonctionPoidNiveau1(ArrayList<ArrayList<Double>> valeurVoulu,ArrayList<ArrayList<Double>> valeurSortie,double valeurT){
 
 
         for (int i = 0; i <valeurSortie.size() ; i++) {
 
-            this.lisetePoidTotalNiveau2 = fonctionPoidNiveau2(valeurVoulu.get(i), valeurSortie.get(i),valeurT);
+            fonctionPoidNiveau2(valeurVoulu.get(i), valeurSortie.get(i),valeurT);
 
-            this.lisetePoidTotalNiveau1.add(this.lisetePoidTotalNiveau2);
         }
-        return this.lisetePoidTotalNiveau1;
-
     }
 
-    private ArrayList<Double> fonctionPoidNiveau2(ArrayList<Double> valeurVoulu,ArrayList<Double> valeurSortie,double valeur){
+    private void fonctionPoidNiveau2(ArrayList<Double> valeurVoulu,ArrayList<Double> valeurSortie,double valeur){
 
         this.lisetePoidTotalNiveau2=new ArrayList<>(1);
 
         for (int i = 0; i <valeurSortie.size() ; i++) {
 
-            valeurVoulu.get(i)=valeurVoulu;
+            double v = valeurVoulu.get(i) - valeur * valeurSortie.get(i);
+            valeurVoulu.set(i,v);
 
         }
-
-        return this.lisetePoidTotalNiveau2;
     }
 
 
